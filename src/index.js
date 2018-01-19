@@ -1,7 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import searchReducer from './reducers/searchReducer';
+import GithubSearch from './containers/GithubSearch';
 
-// main app
-import App from './containers/App';
+const store = createStore(searchReducer);
 
-ReactDOM.render(<App />, document.getElementById('app'))
+const App = () => (
+  <Provider store={store}>
+    <GithubSearch />
+  </Provider>
+);
+
+render(<App />, document.getElementById('root'));
