@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchUser } from '../actions/searchAction';
+import { searchUser } from '../actions/actions';
 
 class Search extends React.Component {
   constructor(props) {
@@ -12,10 +12,12 @@ class Search extends React.Component {
   update(e) {
     //console.log(e.target.value);
     let input = e.target.value;
-    let res = searchUser(input);
-    console.log(res);
+    //let res = searchUser(input);
+    //console.log(res);
 
-    //this.props.dispatch(res);
+    this.props.dispatch(searchUser(input));
+    //console.log(this.props.getState());
+
   }
 
   render() {
@@ -34,9 +36,7 @@ class Search extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-    return {users: state.users};
-  }
 
 
-export default connect(mapStateToProps)(Search);
+
+export default connect()(Search);

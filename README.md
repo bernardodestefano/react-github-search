@@ -1,6 +1,6 @@
 # Webpack boilerplate
 
-A simple react-webpack boilerplate
+A github users search react component
 
 ## Getting started
 
@@ -12,4 +12,4 @@ A simple react-webpack boilerplate
 ## Contributing
 
 - Fork the project, add your feature (or fix a bug) and open a pull request OR
-- [Open](https://github.com/bernardodestefano/react-boilerplate/issues/new) an issue for bugs or feature request.
+- [Open](https://github.com/bernardodestefano/react-github-search/issues/new) an issue for bugs or feature request.

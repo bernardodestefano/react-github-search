@@ -7,6 +7,10 @@ import GithubSearch from './containers/GithubSearch';
 
 const store = createStore(searchReducer);
 
+const unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
+
 const App = () => (
   <Provider store={store}>
     <GithubSearch />

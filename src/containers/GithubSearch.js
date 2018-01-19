@@ -17,9 +17,7 @@ class GithubSearch extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {users: state.users};
-}
 
 
-export default connect(mapStateToProps)(GithubSearch);
+
+export default connect()(GithubSearch);
