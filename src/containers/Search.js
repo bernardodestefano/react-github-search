@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchUser } from '../actions/actions';
+import UserList from '../components/UserList';
+import { updateInput } from '../actions/actions';
+
 
 class Search extends React.Component {
   constructor(props) {
@@ -12,10 +14,13 @@ class Search extends React.Component {
   update(e) {
     //console.log(e.target.value);
     let input = e.target.value;
+
+    if(input.length < 2 )
+      return;
     //let res = searchUser(input);
     //console.log(res);
-
-    this.props.dispatch(searchUser(input));
+    this.props.itemsInput(input);
+    //this.props.dispatch(searchUser(input));
     //console.log(this.props.getState());
 
   }
@@ -30,13 +35,23 @@ class Search extends React.Component {
             placeholder="search for users"
             required
           />
-
+        <UserList list={this.props.input} />
       </div>
     )
   }
 }
 
 
+const mapStateToProps = (state) => {
+    return {
+        input: state.input
+    };
+};
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        itemsInput: (input) => dispatch(updateInput(input))
+    };
+};
 
-export default connect()(Search);
+export default connect(mapStateToProps,mapDispatchToProps)(Search);

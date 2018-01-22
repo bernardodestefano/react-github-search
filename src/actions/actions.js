@@ -21,6 +21,19 @@ export const itemsFetchDataSuccess = items => {
   };
 };
 
+export const itemsInput = input => {
+  return {
+    type: 'ITEMS_INPUT',
+    input
+  };
+};
+
+export const updateInput = input => {
+  return (dispatch) => {
+    dispatch(itemsInput(input));
+  }
+}
+
 export const itemsFetchData = url => {
   return (dispatch) => {
       dispatch(itemsAreLoading(true));

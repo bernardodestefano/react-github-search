@@ -9,7 +9,7 @@ class GithubSearch extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchData('https://api.github.com/search/users?q=bernardo');
+    //this.props.fetchData('https://api.github.com/search/users?q=bernardo');
   }
 
   render() {

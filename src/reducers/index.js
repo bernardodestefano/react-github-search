@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import { items, itemsHaveError, itemsAreLoading } from './searchReducer';
+import { input, items, itemsHaveError, itemsAreLoading } from './searchReducer';
 
 export default combineReducers({
+    input,
     items,
     itemsHaveError,
     itemsAreLoading

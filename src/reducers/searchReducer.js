@@ -24,3 +24,12 @@ export const items = (state = [], action) => {
       return state;
   }
 }
+
+export const input = (state = "", action) => {
+  switch (action.type) {
+    case 'ITEMS_INPUT':
+      return action.input;
+    default:
+      return state;
+  }
+}
