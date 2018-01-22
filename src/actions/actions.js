@@ -48,7 +48,7 @@ export const itemsFetchData = url => {
 
               return response;
           })
-          .then((response) => dispatch(itemsFetchDataSuccess(response.data)))
+          .then((response) => dispatch(itemsFetchDataSuccess(response.data.items)))
           .catch(() => dispatch(itemsHaveError(true)));
   };
 }

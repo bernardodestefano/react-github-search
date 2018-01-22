@@ -12,17 +12,10 @@ class Search extends React.Component {
   }
 
   update(e) {
-    //console.log(e.target.value);
     let input = e.target.value;
 
-    if(input.length < 2 )
-      return;
-    //let res = searchUser(input);
-    //console.log(res);
-    this.props.itemsInput(input);
-    //this.props.dispatch(searchUser(input));
-    //console.log(this.props.getState());
-
+    if(input.length > 1 )
+      this.props.itemsInput(input);
   }
 
   render() {

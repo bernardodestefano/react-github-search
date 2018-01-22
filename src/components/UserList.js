@@ -7,8 +7,12 @@ class UserList extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    //this.props.fetchData(`https://api.github.com/search/users?q=${this.props.input}`);
+  componentWillReceiveProps(nextProps) {
+    if(this.props.input !== nextProps.input && this.props.input.length > 1) {
+
+      this.props.fetchData(`https://api.github.com/search/users?q=${this.props.input}`);
+      console.log("MAMMT "+this.props.items);
+    }
   }
 
   render() {
@@ -22,14 +26,17 @@ class UserList extends React.Component {
 
     return (
       <div>
-        ciao
+        <ul>
+          {this.props.items.map( user => <li key={user.id}>{user.login}</li> )}
+        </ul>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
     return {
+        input: state.input,
         items: state.items,
         hasError: state.itemsHaveError,
         isLoading: state.itemsAreLoading
