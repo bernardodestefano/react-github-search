@@ -2,28 +2,27 @@ import React from 'react';
 import Search from './Search';
 import { connect } from 'react-redux';
 import { itemsFetchData } from '../actions/actions';
+import UserList from '../components/UserList';
+
 
 class GithubSearch extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {input: ''};
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    //this.props.fetchData('https://api.github.com/search/users?q=bernardo');
+  handleChange(input) {
+    this.setState({input: input});
   }
 
   render() {
-    if (this.props.hasError) {
-      return <p>Sorry! There was an error loading the items</p>;
-    }
-
-    if (this.props.isLoading) {
-      return <p>Loading…</p>;
-    }
-
     return (
       <div className="GithubSearch">
-        <Search />
+        <Search onInputChange={this.handleChange}/>
+        <UserList username={this.state.input} />
       </div>
     )
   }
@@ -37,11 +36,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchData: (url) => dispatch(itemsFetchData(url))
-    };
-};
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(GithubSearch);
+export default connect(mapStateToProps)(GithubSearch);

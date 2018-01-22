@@ -1,0 +1,25 @@
+.UserList {
+  list-style: none;
+}
+
+.UserList__item {
+  height: 50px;
+  margin-bottom: 3em;
+}
+
+.User {
+  height: 80px;
+  width: 100%;
+
+}
+
+.User__img,
+.User__name {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.User__img {
+  height: 100%;
+  margin-right: 2em;
+}

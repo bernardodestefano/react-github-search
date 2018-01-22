@@ -14,8 +14,7 @@ class Search extends React.Component {
   update(e) {
     let input = e.target.value;
 
-    if(input.length > 1 )
-      this.props.itemsInput(input);
+    this.props.onInputChange(input);
   }
 
   render() {
@@ -28,23 +27,11 @@ class Search extends React.Component {
             placeholder="search for users"
             required
           />
-        <UserList list={this.props.input} />
+
       </div>
     )
   }
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        input: state.input
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        itemsInput: (input) => dispatch(updateInput(input))
-    };
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(Search);
+export default Search;
