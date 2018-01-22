@@ -1,11 +1,41 @@
-import searchService from '../services/searchService';
+import axios from 'axios';
 
-export const SEARCH_USER = 'SEARCH_USER';
-
-export const searchUser = username => {
-  //let result = searchService(username);
+export const itemsHaveError = bool => {
   return {
-    type: SEARCH_USER,
-    username
+    type: 'ITEMS_HAVE_ERROR',
+    hasError: bool
+  };
+};
+
+export const itemsAreLoading = bool => {
+  return {
+    type: 'ITEMS_ARE_LOADING',
+    isLoading: bool
+  };
+};
+
+export const itemsFetchDataSuccess = items => {
+  return {
+    type: 'ITEMS_FETCH_DATA_SUCCESS',
+    items
+  };
+};
+
+export const itemsFetchData = url => {
+  return (dispatch) => {
+      dispatch(itemsAreLoading(true));
+
+      axios.get(url)
+          .then((response) => {
+              if (response.status !== 200) {
+                  throw Error(response.statusText);
+              }
+
+              dispatch(itemsAreLoading(false));
+
+              return response;
+          })
+          .then((response) => dispatch(itemsFetchDataSuccess(response.data)))
+          .catch(() => dispatch(itemsHaveError(true)));
   };
 }
